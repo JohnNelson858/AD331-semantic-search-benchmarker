@@ -1,0 +1,254 @@
+{
+  "queries": 18,
+  "rows": [
+    {
+      "strategy": "fixed256",
+      "name": "Dense \u00b7 256 tokens",
+      "k": 3,
+      "chunk_count": 142,
+      "hit_rate": 0.5,
+      "recall": 0.5,
+      "mrr": 0.37037037037037035,
+      "avg_ms": 1.1275330555488634,
+      "p50_ms": 0.9480384997004876,
+      "p95_ms": 1.6167518001793693,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "fixed256",
+      "name": "Dense \u00b7 256 tokens",
+      "k": 5,
+      "chunk_count": 142,
+      "hit_rate": 0.5,
+      "recall": 0.5,
+      "mrr": 0.37037037037037035,
+      "avg_ms": 1.1275330555488634,
+      "p50_ms": 0.9480384997004876,
+      "p95_ms": 1.6167518001793693,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "fixed256",
+      "name": "Dense \u00b7 256 tokens",
+      "k": 10,
+      "chunk_count": 142,
+      "hit_rate": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "mrr": 0.41395502645502646,
+      "avg_ms": 1.1275330555488634,
+      "p50_ms": 0.9480384997004876,
+      "p95_ms": 1.6167518001793693,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "fixed1024",
+      "name": "Dense \u00b7 1024 tokens",
+      "k": 3,
+      "chunk_count": 38,
+      "hit_rate": 0.6111111111111112,
+      "recall": 0.6111111111111112,
+      "mrr": 0.5370370370370371,
+      "avg_ms": 0.8411599444571038,
+      "p50_ms": 0.751969500015548,
+      "p95_ms": 1.224907150094621,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "fixed1024",
+      "name": "Dense \u00b7 1024 tokens",
+      "k": 5,
+      "chunk_count": 38,
+      "hit_rate": 0.7222222222222222,
+      "recall": 0.7222222222222222,
+      "mrr": 0.5620370370370371,
+      "avg_ms": 0.8411599444571038,
+      "p50_ms": 0.751969500015548,
+      "p95_ms": 1.224907150094621,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "fixed1024",
+      "name": "Dense \u00b7 1024 tokens",
+      "k": 10,
+      "chunk_count": 38,
+      "hit_rate": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "mrr": 0.5792328042328042,
+      "avg_ms": 0.8411599444571038,
+      "p50_ms": 0.751969500015548,
+      "p95_ms": 1.224907150094621,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "structural",
+      "name": "Dense \u00b7 structure-aware",
+      "k": 3,
+      "chunk_count": 146,
+      "hit_rate": 0.7222222222222222,
+      "recall": 0.7222222222222222,
+      "mrr": 0.6018518518518517,
+      "avg_ms": 0.8630352777395779,
+      "p50_ms": 0.807355999995707,
+      "p95_ms": 1.1628644497250191,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "structural",
+      "name": "Dense \u00b7 structure-aware",
+      "k": 5,
+      "chunk_count": 146,
+      "hit_rate": 0.7222222222222222,
+      "recall": 0.7222222222222222,
+      "mrr": 0.6018518518518517,
+      "avg_ms": 0.8630352777395779,
+      "p50_ms": 0.807355999995707,
+      "p95_ms": 1.1628644497250191,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "structural",
+      "name": "Dense \u00b7 structure-aware",
+      "k": 10,
+      "chunk_count": 146,
+      "hit_rate": 0.8333333333333334,
+      "recall": 0.8333333333333334,
+      "mrr": 0.6190476190476191,
+      "avg_ms": 0.8630352777395779,
+      "p50_ms": 0.807355999995707,
+      "p95_ms": 1.1628644497250191,
+      "embedding_ms": 5.659036166611663
+    },
+    {
+      "strategy": "bm25",
+      "name": "BM25 \u00b7 structure-aware",
+      "k": 3,
+      "chunk_count": 146,
+      "hit_rate": 0.6111111111111112,
+      "recall": 0.6111111111111112,
+      "mrr": 0.5277777777777778,
+      "avg_ms": 0.7378073888857115,
+      "p50_ms": 0.7515934998991725,
+      "p95_ms": 0.9936555498825327,
+      "embedding_ms": 0.0
+    },
+    {
+      "strategy": "bm25",
+      "name": "BM25 \u00b7 structure-aware",
+      "k": 5,
+      "chunk_count": 146,
+      "hit_rate": 0.6111111111111112,
+      "recall": 0.6111111111111112,
+      "mrr": 0.5277777777777778,
+      "avg_ms": 0.7378073888857115,
+      "p50_ms": 0.7515934998991725,
+      "p95_ms": 0.9936555498825327,
+      "embedding_ms": 0.0
+    },
+    {
+      "strategy": "bm25",
+      "name": "BM25 \u00b7 structure-aware",
+      "k": 10,
+      "chunk_count": 146,
+      "hit_rate": 0.6666666666666666,
+      "recall": 0.6666666666666666,
+      "mrr": 0.5370370370370371,
+      "avg_ms": 0.7378073888857115,
+      "p50_ms": 0.7515934998991725,
+      "p95_ms": 0.9936555498825327,
+      "embedding_ms": 0.0
+    }
+  ],
+  "failures": [
+    {
+      "id": "q01",
+      "query": "Which parameter is response_model_exclude_unset?",
+      "kind": "exact",
+      "winner": "BM25",
+      "bm25": 0.5,
+      "dense": 0.3333333333333333,
+      "hint": "Query terms in the labeled evidence: parameter, response_model_exclude_unset. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "response-model.md",
+          "quote": "Use the `response_model_exclude_unset` parameter"
+        }
+      ]
+    },
+    {
+      "id": "q07",
+      "query": "Which parameter controls openapi_tags?",
+      "kind": "exact",
+      "winner": "Dense",
+      "bm25": 0.5,
+      "dense": 1.0,
+      "hint": "Query terms in the labeled evidence: openapi_tags, parameter. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "metadata.md",
+          "quote": "with the parameter `openapi_tags`"
+        }
+      ]
+    },
+    {
+      "id": "q08",
+      "query": "Does expose_headers control custom browser headers?",
+      "kind": "exact",
+      "winner": "BM25",
+      "bm25": 1.0,
+      "dense": 0.0,
+      "hint": "Query terms in the labeled evidence: expose_headers. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "middleware.md",
+          "quote": "using the parameter `expose_headers`"
+        }
+      ]
+    },
+    {
+      "id": "q16",
+      "query": "Can synchronous and asynchronous dependency functions be mixed?",
+      "kind": "conceptual",
+      "winner": "Dense",
+      "bm25": 0.0,
+      "dense": 1.0,
+      "hint": "Query terms in the labeled evidence: none. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "dependencies.md",
+          "quote": "declare dependencies with `async def` inside of normal `def`"
+        }
+      ]
+    },
+    {
+      "id": "q17",
+      "query": "Can callers leave a search term out entirely?",
+      "kind": "conceptual",
+      "winner": "Dense",
+      "bm25": 0.0,
+      "dense": 0.5,
+      "hint": "Query terms in the labeled evidence: none. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "query-params.md",
+          "quote": "declare optional query parameters, by setting their default to `None`"
+        }
+      ]
+    },
+    {
+      "id": "q18",
+      "query": "How are the groups ordered in the interactive API reference?",
+      "kind": "conceptual",
+      "winner": "Dense",
+      "bm25": 0.0,
+      "dense": 0.5,
+      "hint": "Query terms in the labeled evidence: the. This is a clue, not a causal test.",
+      "evidence": [
+        {
+          "doc": "metadata.md",
+          "quote": "The order of each tag metadata dictionary also defines the order"
+        }
+      ]
+    }
+  ],
+  "latency_scope": "Search at K=10 after indexing; dense query embedding reported separately."
+}

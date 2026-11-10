@@ -46,7 +46,34 @@ You can also specify whether your backend allows:
 * Specific HTTP methods (`POST`, `PUT`) or all of them with the wildcard `"*"`.
 * Specific HTTP headers or all of them with the wildcard `"*"`.
 
-{* ../../docs_src/cors/tutorial001.py hl[2,6:11,13:19] *}
+
+```python
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+app = FastAPI()
+
+origins = [
+    "http://localhost.tiangolo.com",
+    "https://localhost.tiangolo.com",
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+@app.get("/")
+async def main():
+    return {"message": "Hello World"}
+```
+
 
 
 The default parameters used by the `CORSMiddleware` implementation are restrictive by default, so you'll need to explicitly enable particular origins, methods, or headers, in order for browsers to be permitted to use them in a Cross-Domain context.

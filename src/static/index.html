@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SearchWorkbench | AD 331</title>
+<link rel="stylesheet" href="/static/app.css">
+<script src="/static/app.js" defer></script>
+</head>
+<body>
+<header><a class="brand" href="/">SearchWorkbench</a><span>John Nelson / AD 331</span></header>
+<main>
+<section class="hero">
+<p class="eyebrow">INFORMATION RETRIEVAL LAB</p>
+<h1>Two ways to search<br><em>the same docs.</em></h1>
+<p>Explore FastAPI’s technical documentation with BM25 and a local embedding model. Run the same labeled queries across three chunking strategies.</p>
+<div class="facts"><span id="docs">12 source documents</span><span id="queries">18 labeled queries</span><span>Local embeddings · No API key</span></div>
+</section>
+<nav aria-label="Workbench views"><button id="searchTab" aria-controls="search" aria-pressed="true">Live search</button><button id="benchTab" aria-controls="benchmark" aria-pressed="false">Benchmark</button></nav>
+<section id="search">
+<h2>Compare live results</h2>
+<form id="searchForm">
+<label>Technical query<input id="query" required maxlength="400" placeholder="Try a FastAPI question or identifier"></label>
+<label>Results (K)<select id="k"><option>3</option><option selected>5</option><option>10</option></select></label>
+<label>Dense chunking<select id="strategy"><option value="structural">Structure-aware</option><option value="fixed256">256 tokens</option><option value="fixed1024">1024 tokens</option></select></label>
+<button class="primary" type="submit">Search</button>
+</form>
+<div id="examples" class="examples" aria-label="Example queries"></div>
+<p id="searchStatus" role="status">Enter a query to compare the two rankings.</p>
+<div class="comparison">
+<div><h3>BM25 <small>Keyword score</small></h3><ol id="bm25"></ol></div>
+<div><h3>Dense <small>Cosine similarity</small></h3><ol id="dense"></ol></div>
+</div>
+</section>
+<section id="benchmark" hidden>
+<h2>Retrieval benchmark</h2>
+<div class="benchControls"><button id="run" class="primary">Run Benchmark</button><label>Cutoff K<select id="cutoff"><option>3</option><option selected>5</option><option>10</option></select></label></div>
+<p id="benchStatus" role="status">Run the labeled evaluation to populate the results.</p>
+<div id="benchResults" hidden>
+<h3>Ranking quality</h3><div id="bars" aria-label="Ranking quality chart"></div>
+<div class="scroll"><table><thead><tr><th>Strategy</th><th>Hit Rate</th><th>Recall</th><th>MRR</th><th>Mean ms</th><th>p50 ms</th><th>p95 ms</th><th>Encode ms</th></tr></thead><tbody id="rows"></tbody></table></div>
+<h3>Where the methods disagree</h3>
+<p>Compares first relevant rank at K=5 on structure-aware chunks for both methods.</p>
+<div id="failures"></div>
+</div>
+</section>
+</main>
+<footer>FastAPI documentation snapshot 0.115.6 · Jina small English embeddings · Chroma cosine · BM25</footer>
+</body>
+</html>

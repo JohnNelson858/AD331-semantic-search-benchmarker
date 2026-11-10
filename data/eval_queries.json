@@ -1,0 +1,208 @@
+[
+  {
+    "id": "q01",
+    "kind": "exact",
+    "query": "Which parameter is response_model_exclude_unset?",
+    "evidence": [
+      {
+        "doc": "response-model.md",
+        "quote": "Use the `response_model_exclude_unset` parameter"
+      }
+    ]
+  },
+  {
+    "id": "q02",
+    "kind": "exact",
+    "query": "openapi_url=None",
+    "evidence": [
+      {
+        "doc": "metadata.md",
+        "quote": "set `openapi_url=None`"
+      }
+    ]
+  },
+  {
+    "id": "q03",
+    "kind": "exact",
+    "query": "How do I disable docs_url?",
+    "evidence": [
+      {
+        "doc": "metadata.md",
+        "quote": "setting `docs_url=None`"
+      },
+      {
+        "doc": "metadata.md",
+        "quote": "You can set its URL with the parameter `docs_url`"
+      }
+    ]
+  },
+  {
+    "id": "q04",
+    "kind": "exact",
+    "query": "How do I override RequestValidationError?",
+    "evidence": [
+      {
+        "doc": "handling-errors.md",
+        "quote": "`@app.exception_handler(RequestValidationError)`"
+      }
+    ]
+  },
+  {
+    "id": "q05",
+    "kind": "exact",
+    "query": "What headers accompany Access-Control-Request-Method?",
+    "evidence": [
+      {
+        "doc": "cors.md",
+        "quote": "`OPTIONS` request with `Origin` and `Access-Control-Request-Method`"
+      }
+    ]
+  },
+  {
+    "id": "q06",
+    "kind": "exact",
+    "query": "How do I create a TestClient?",
+    "evidence": [
+      {
+        "doc": "testing.md",
+        "quote": "Create a `TestClient` by passing your **FastAPI** application to it."
+      }
+    ]
+  },
+  {
+    "id": "q07",
+    "kind": "exact",
+    "query": "Which parameter controls openapi_tags?",
+    "evidence": [
+      {
+        "doc": "metadata.md",
+        "quote": "with the parameter `openapi_tags`"
+      }
+    ]
+  },
+  {
+    "id": "q08",
+    "kind": "exact",
+    "query": "Does expose_headers control custom browser headers?",
+    "evidence": [
+      {
+        "doc": "middleware.md",
+        "quote": "using the parameter `expose_headers`"
+      }
+    ]
+  },
+  {
+    "id": "q09",
+    "kind": "exact",
+    "query": "What is the default skip=0 and limit=10?",
+    "evidence": [
+      {
+        "doc": "query-params.md",
+        "quote": "default values of `skip=0` and `limit=10`"
+      }
+    ]
+  },
+  {
+    "id": "q10",
+    "kind": "conceptual",
+    "query": "Can visitors receive an acknowledgment without waiting for follow-up processing?",
+    "evidence": [
+      {
+        "doc": "background-tasks.md",
+        "quote": "the client doesn't really have to be waiting for the operation to complete"
+      }
+    ]
+  },
+  {
+    "id": "q11",
+    "kind": "conceptual",
+    "query": "Can I intercept traffic in both directions around the route handler?",
+    "evidence": [
+      {
+        "doc": "middleware.md",
+        "quote": "before it is processed by any specific *path operation*"
+      }
+    ]
+  },
+  {
+    "id": "q12",
+    "kind": "conceptual",
+    "query": "Will changing the server port make the browser see a different origin?",
+    "evidence": [
+      {
+        "doc": "cors.md",
+        "quote": "An origin is the combination of protocol"
+      },
+      {
+        "doc": "cors.md",
+        "quote": "and port (`80`, `443`, `8080`)"
+      }
+    ]
+  },
+  {
+    "id": "q13",
+    "kind": "conceptual",
+    "query": "How do I reject a missing resource from a helper without continuing the endpoint?",
+    "evidence": [
+      {
+        "doc": "handling-errors.md",
+        "quote": "it will terminate that request right away"
+      }
+    ]
+  },
+  {
+    "id": "q14",
+    "kind": "conceptual",
+    "query": "Can an endpoint keep private properties out of its public result?",
+    "evidence": [
+      {
+        "doc": "response-model.md",
+        "quote": "filtering out all the data that is not declared in the output model"
+      }
+    ]
+  },
+  {
+    "id": "q15",
+    "kind": "conceptual",
+    "query": "What happens when two definitions can handle the same URL?",
+    "evidence": [
+      {
+        "doc": "path-params.md",
+        "quote": "The first one will always be used since the path matches first."
+      }
+    ]
+  },
+  {
+    "id": "q16",
+    "kind": "conceptual",
+    "query": "Can synchronous and asynchronous dependency functions be mixed?",
+    "evidence": [
+      {
+        "doc": "dependencies.md",
+        "quote": "declare dependencies with `async def` inside of normal `def`"
+      }
+    ]
+  },
+  {
+    "id": "q17",
+    "kind": "conceptual",
+    "query": "Can callers leave a search term out entirely?",
+    "evidence": [
+      {
+        "doc": "query-params.md",
+        "quote": "declare optional query parameters, by setting their default to `None`"
+      }
+    ]
+  },
+  {
+    "id": "q18",
+    "kind": "conceptual",
+    "query": "How are the groups ordered in the interactive API reference?",
+    "evidence": [
+      {
+        "doc": "metadata.md",
+        "quote": "The order of each tag metadata dictionary also defines the order"
+      }
+    ]
+  }
+]
