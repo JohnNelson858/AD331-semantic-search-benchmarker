@@ -118,3 +118,7 @@ Choose a tier only after checking cold startup time and peak memory on the
 deployment. The bundled corpus is read-only and indexes rebuild at startup.
 The Docker configuration is supplied; Docker build and Render deployment still
 need to be verified on the target environment. See [Render Docker docs](https://render.com/docs/docker).
+
+## Dell verification
+
+John verified both live comparator examples and ran the benchmark locally. His screenshot shows MRR@5 of 0.602 for structure-aware dense search. The local test run passed all 16 tests in 74.97 seconds with one upstream test-client deprecation warning. See [Dell verification](docs/dell-verification.md). Docker and Render deployment are not yet verified.

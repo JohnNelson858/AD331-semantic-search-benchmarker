@@ -14,7 +14,7 @@ path for Render. Audit the generated baseline and test fixes with regressions.
 
 ## Audit results
 
-The baseline is preserved in Git at commit 654e65b. The failing test output
+The baseline is preserved in Git at commit cca38b2bd6483a9928832e9770ae1a96983972ee. The failing test output
 is in docs/audit-baseline-test.txt and the source diff in docs/audit-fixes.patch.
 
 - **MRR cutoff:** the first relevant rank was looked up in the full list,
@@ -41,3 +41,10 @@ Walk through the original failure output, the patch, and the benchmark
 results before recording. The review and presentation should describe what
 the observed checks demonstrate and distinguish workspace timing from
 measurements taken on your Dell or on Render.
+
+## Published audit stages
+
+- Generate initial retrieval and evaluation modules: [cca38b2](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/cca38b2bd6483a9928832e9770ae1a96983972ee).
+- Reproduce two failures in initial generated baseline: [0609a5d](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/0609a5d199d116f25ae6ecfed62f3e311483ea03).
+- Fix MRR cutoff and preserve fenced blocks and source offsets: [c1e5858](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/c1e5858fd77b6394ef12cf112700d5c18f20ecdd).
+- Complete local search dashboard benchmark and deployment packaging: [b10e80c](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/b10e80c6e8658541eeecc52826e694f34e8f496d).
