@@ -27,5 +27,5 @@ def metrics(ranking, groups, k):
     top=set(ranking[:k])
     count=sum(bool(g & top) for g in groups)
     relevant=set().union(*groups)
-    first=next((i for i,x in enumerate(ranking,1) if x in relevant),0)
+    first=next((i for i,x in enumerate(ranking[:k],1) if x in relevant),0)
     return {"hit_rate":float(count>0),"recall":count/len(groups),"mrr":1/first if first else 0.0}

@@ -1,5 +1,6 @@
 """Source-preserving Markdown splitters with stable line coordinates."""
 import re
+from bisect import bisect_left, bisect_right
 from functools import lru_cache
 import tiktoken
 from pydantic import BaseModel
@@ -30,12 +31,23 @@ class FixedSizeChunker:
         enc=tokenizer()
         ids=enc.encode_ordinary(text)
         stride=self.size-self.overlap
+        boundaries=[0]
+        for token in ids:
+            boundaries.append(boundaries[-1]+len(enc.decode_single_token_bytes(token)))
+        char_bytes=[0]
+        for char in text:
+            char_bytes.append(char_bytes[-1]+len(char.encode("utf-8")))
+        headings=StructureAwareChunker().split(doc,text)
         out=[]
         for i in range(0,len(ids),stride):
             j=min(i+self.size,len(ids))
-            start=len(enc.decode(ids[:i]))
-            end=len(enc.decode(ids[:j]))
-            out.append(make_chunk(doc,text,start,end,len(out),[]))
+            start=bisect_right(char_bytes,boundaries[i])-1
+            end=bisect_left(char_bytes,boundaries[j])
+            header=next((c.metadata["headers"] for c in headings
+                         if c.metadata["start"]<=start<c.metadata["end"]),[])
+            chunk=make_chunk(doc,text,start,end,len(out),header)
+            chunk.metadata.update(token_start=i,token_end=j,window_tokens=j-i)
+            out.append(chunk)
             if j==len(ids):
                 break
         return out
@@ -46,8 +58,19 @@ FENCE=re.compile(r"^ {0,3}(`{3,}|~{3,})(.*)$")
 class StructureAwareChunker:
     def split(self, doc: str, text: str) -> list[DocumentChunk]:
         headers=[]; out=[]; offset=start=0
+        fence=None
         for line in text.splitlines(keepends=True):
-            match=HEADING.match(line.rstrip("\r\n"))
+            clean=line.rstrip("\r\n")
+            marker=FENCE.match(clean)
+            if marker:
+                token,tail=marker.groups()
+                if fence is None:
+                    fence=token
+                elif token[0]==fence[0] and len(token)>=len(fence) and not tail.strip():
+                    fence=None
+                offset+=len(line)
+                continue
+            match=HEADING.match(clean) if fence is None else None
             if match:
                 if text[start:offset].strip():
                     out.append(make_chunk(doc,text,start,offset,len(out),[v for _,v in headers]))
