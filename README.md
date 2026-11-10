@@ -116,9 +116,15 @@ Render, select the repository and Docker runtime, and set **Health Check Path**
 to `/healthz`. The container binds to `0.0.0.0` and honors Render's `PORT`.
 Choose a tier only after checking cold startup time and peak memory on the
 deployment. The bundled corpus is read-only and indexes rebuild at startup.
-The Docker configuration is supplied; Docker build and Render deployment still
-need to be verified on the target environment. See [Render Docker docs](https://render.com/docs/docker).
+The Docker image computes the fixed corpus embeddings during its build and
+loads a content-addressed cache at runtime. Live queries still use the same
+Jina model, and Chroma builds real cosine indexes from the cached vectors.
+Missing or stale deployment caches fail startup rather than unexpectedly
+re-embedding long documents on a small instance. No persistent disk or API key
+is required. Compose enforces a 2 GiB limit for local verification before
+selecting a hosting tier. See [memory measurements](docs/memory-optimization.md)
+and [Render Docker docs](https://render.com/docs/docker).
 
 ## Dell verification
 
-John verified both live comparator examples and ran the benchmark locally. His screenshot shows MRR@5 of 0.602 for structure-aware dense search. The local test run passed all 16 tests in 74.97 seconds with one upstream test-client deprecation warning. See [Dell verification](docs/dell-verification.md). Docker and Render deployment are not yet verified.
+John verified both live comparator examples and ran the benchmark locally. His screenshot shows MRR@5 of 0.602 for structure-aware dense search. The original local test run passed all 16 tests in 74.97 seconds with one upstream test-client deprecation warning. He also verified the original Docker container was healthy. See [Dell verification](docs/dell-verification.md). The optimized Docker rebuild on the Dell and Render deployment remain to be verified.

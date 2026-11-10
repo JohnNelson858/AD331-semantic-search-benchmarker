@@ -8,6 +8,7 @@ from .benchmarker import QueryCase, metrics, resolve
 from .chunking import FixedSizeChunker, StructureAwareChunker
 from .indexer import Dense, Encoder, Lexical, lex, memory_client
 from .ingest import read_document
+from .vector_cache import corpus_vectors
 
 ROOT = Path(__file__).resolve().parents[1]
 CONFIGS = {"fixed256": "Dense · 256 tokens", "fixed1024": "Dense · 1024 tokens",
@@ -26,7 +27,7 @@ class Workbench:
                              ("structural",StructureAwareChunker())):
             chunks=[c for doc,text in self.corpus.items() for c in splitter.split(doc,text)]
             self.chunks[key]=chunks
-            self.dense[key]=Dense(chunks,self.encoder.embed([c.content for c in chunks]),self.client)
+            self.dense[key]=Dense(chunks,corpus_vectors(chunks,self.encoder),self.client)
         self.lexical=Lexical(self.chunks["structural"])
         self.chunks["bm25"]=self.chunks["structural"]
         self.ground_truth={key:{q.id:resolve(q,self.corpus,cs) for q in self.cases}

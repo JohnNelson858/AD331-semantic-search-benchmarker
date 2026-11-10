@@ -48,3 +48,15 @@ measurements taken on your Dell or on Render.
 - Reproduce two failures in initial generated baseline: [0609a5d](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/0609a5d199d116f25ae6ecfed62f3e311483ea03).
 - Fix MRR cutoff and preserve fenced blocks and source offsets: [c1e5858](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/c1e5858fd77b6394ef12cf112700d5c18f20ecdd).
 - Complete local search dashboard benchmark and deployment packaging: [b10e80c](https://github.com/JohnNelson858/AD331-semantic-search-benchmarker/commit/b10e80c6e8658541eeecc52826e694f34e8f496d).
+
+## Deployment memory audit (November 10, 2026)
+
+John supplied Docker evidence showing 3.199 GiB idle usage and requested memory
+optimization before selecting paid hosting. The baseline batched eight documents
+and retained ONNX CPU arena allocations. Single-document batches, disabled CPU
+arena retention, and a shared inference lock reduced measured memory. Next,
+real corpus vectors were cached during the Docker build; a model-revision and
+chunk-content fingerprint prevents stale cache reuse, and required deployment
+caches fail closed. Query embeddings remain live and no document text is
+truncated. Cache reuse, invalidation, and invalid-vector rejection have tests.
+See docs/memory-optimization.md for measurements, checks, and limitations.

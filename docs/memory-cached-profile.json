@@ -1,0 +1,38 @@
+{
+  "scope": "Fresh Linux Python process; not total container usage",
+  "build_seconds": 1.12,
+  "after_indexing": {
+    "rss_mib": 325.7,
+    "peak_mib": 325.7
+  },
+  "after_search_and_benchmark": {
+    "rss_mib": 329.9,
+    "peak_mib": 329.9
+  },
+  "quality_at_5": [
+    {
+      "strategy": "fixed256",
+      "hit_rate": 0.5,
+      "recall": 0.5,
+      "mrr": 0.37037037037037035
+    },
+    {
+      "strategy": "fixed1024",
+      "hit_rate": 0.7222222222222222,
+      "recall": 0.7222222222222222,
+      "mrr": 0.5620370370370371
+    },
+    {
+      "strategy": "structural",
+      "hit_rate": 0.7222222222222222,
+      "recall": 0.7222222222222222,
+      "mrr": 0.6018518518518517
+    },
+    {
+      "strategy": "bm25",
+      "hit_rate": 0.6111111111111112,
+      "recall": 0.6111111111111112,
+      "mrr": 0.5277777777777778
+    }
+  ]
+}

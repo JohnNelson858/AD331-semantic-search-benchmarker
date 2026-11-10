@@ -1,6 +1,8 @@
 services:
   search:
     build: .
+    # Verify locally against the intended 2 GiB hosting budget.
+    mem_limit: 2g
     ports:
       - "127.0.0.1:8002:8000"
     healthcheck:

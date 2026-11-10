@@ -1,6 +1,7 @@
 """In-process Chroma cosine collections and BM25."""
 import re
 import uuid
+from threading import Lock
 import chromadb
 import numpy as np
 from fastembed import TextEmbedding
@@ -20,9 +21,19 @@ def unit_rows(values):
 
 class Encoder:
     def __init__(self):
-        self.model=TextEmbedding(MODEL_ID,specific_model_path=str(prepare()),threads=2)
+        # Long documents make attention buffers large. Do not retain the
+        # largest startup allocation in ONNX Runtime's CPU memory arena.
+        self.model=TextEmbedding(
+            MODEL_ID,specific_model_path=str(prepare()),threads=2,
+            enable_cpu_mem_arena=False,
+        )
+        self._inference_lock=Lock()
     def embed(self,texts):
-        return unit_rows(list(self.model.embed(texts,batch_size=8)))
+        # One document at a time avoids padding eight documents to the longest
+        # length. Serialize search/benchmark inference to bound shared-model
+        # memory when HTTP requests overlap; keep all original document tokens.
+        with self._inference_lock:
+            return unit_rows(list(self.model.embed(texts,batch_size=1)))
 
 class Lexical:
     def __init__(self,chunks):
